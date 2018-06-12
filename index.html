@@ -6,6 +6,7 @@
 		<script src="js/main.js" type="text/javascript"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript"></script>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<style>
 			body {
 				background-color: grey;
@@ -16,10 +17,11 @@
 		<div class="container">
 			<div class="row">
 				<div class="col" style="padding-top: 10px;">
-					<button id="getResults" type="button" class="btn btn-primary">Get tally results</button>
-					<button id="getOptions" type="button" class="btn btn-primary">Get voting options</button>
+					<button id="getResults" type="button" class=" fa fa-history btn btn-primary" style="color: black;">  Get tally results</button>
+					<button id="getOptions" type="button" class="fa fa-book btn btn-primary" style="color: black;">  Get voting options</button>
+					<button id="whoVoted" type="button" class="btn btn-primary fa fa-eye" style="color: black;">  Who voted</button>
 				</div>
-				<table class="table table-bordered table-dark table-hover" style="margin: 10px;">
+				<table class="table table-bordered table-dark table-hover table-striped" style="margin: 10px;">
 					<tbody id='addHere'>
 					</tbody>
 				</table>
