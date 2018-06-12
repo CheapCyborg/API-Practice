@@ -1,6 +1,14 @@
 var apiURL = 'http://voteapi.empower2018.us';
 
 $(document).ready(function () {
+	$(document).on("click", ".api" , function (data) {
+		console.log("Got here");
+		var api = $(this).data('api')
+		$.post(apiURL + "/" + $('#GithubUser').val() +"/vote", {"api_name": api},
+		function() {
+			console.log($('#GithubUser').val());
+		});
+	});
 	$('#getResults').click(function() {
 		$.get(apiURL + '/tally', function(data) {
 			var tallyResults = "<thead class='thead-dark'><tr><th scope='col'>API</th><th scope='col'>Vote Count</th><th scope='col'>API ID</th></tr></thead>";
@@ -14,14 +22,8 @@ $(document).ready(function () {
 		$.get(apiURL + '/apis', function(data) {
 			var optionsResults = "<thead class='thead-dark'><tr><th scope='col'>API</th><th scope='col'>API ID</th></tr></thead>";
 			for (var i = 0; i < data.length; i++) {
-				optionsResults += "<tr><td id='apiName'><button class='api btn btn-dark'data-toggle='tooltip' data-placement='right' title='Cast Vote'>" + data[i].name + "</td></button><td>" + "   " + data[i]._id + "</td></tr>";
-				$(document).on("click", ".api" , function (data) {
-					console.log("Got here");
-					$.post(apiURL + "/" + $('#GithubUser').val() +"/vote", {"api_name": $(optionsResults).val()},
-					function() {
-						console.log($('#GithubUser').val());
-					});
-				});
+				optionsResults += "<tr><td id='apiName'><button class='api btn btn-dark'data-toggle='tooltip' data-placement='right' title='Cast Vote' data-api='" + data[i].name + "'>" + data[i].name + "</button></td><td>" + data[i]._id + "</td></tr>";
+
 			}
 			$('#addHere').html(optionsResults)
 		});
