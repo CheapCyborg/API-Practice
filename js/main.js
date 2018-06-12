@@ -5,7 +5,7 @@ $(document).ready(function () {
 		$.get(apiURL + '/tally', function(data) {
 			var tallyResults = "<thead class='thead-dark'><tr><th scope='col'>API</th><th scope='col'>Vote Count</th><th scope='col'>API ID</th></tr></thead>";
 			for (var i = 0; i < data.length; i++) {
-				tallyResults += "<tr><td>" + data[i].api_name + "</td><td>" + data[i].vote_count + "</td><td>" + data[i].api_id + "</td></tr>";
+				tallyResults += "<tr><td id='apiName'>" + data[i].api_name + "</td><td>" + data[i].vote_count + "</td><td>" + data[i].api_id + "</td></tr>";
 			}
 			$('#addHere').html(tallyResults)
 		});
@@ -14,7 +14,7 @@ $(document).ready(function () {
 		$.get(apiURL + '/apis', function(data) {
 			var optionsResults = "<thead class='thead-dark'><tr><th scope='col'>API</th><th scope='col'>API ID</th></tr></thead>";
 			for (var i = 0; i < data.length; i++) {
-				optionsResults += "<tr><td><button class='api btn btn-dark'>" + data[i].name + "</td></button><td>" + "   " + data[i]._id + "</td></tr>";
+				optionsResults += "<tr><td id='apiName'><button class='api btn btn-dark'>" + data[i].name + "</td></button><td>" + "   " + data[i]._id + "</td></tr>";
 				$(document).on("click", ".api" , function (data) {
 					console.log("Got here");
 					$.post(apiURL + "/CheapCyborg/vote", {"api_name": $(optionsResults).val()},
@@ -30,9 +30,16 @@ $(document).ready(function () {
 			$.get(apiURL + "/who_voted_for_what", function(data) {
 				var voteResults = "<thead class='thead-dark'><tr><th scope='col'>API</th><th scope='col'>Voter Name</th></tr></thead>";
 				for(var i = 0; i < data.length; i++) {
-					voteResults += "<tr><td>" + data[i].api_name + "</td><td>" + data[i].voter_name + "</td></tr>";
+					voteResults += "<tr><td id='apiName'>" + data[i].api_name + "</td><td>" + data[i].voter_name + "</td></tr>";
 				}
 				$('#addHere').html(voteResults);
 			})
 	})
+	$('#clickMe').click(function() {
+  	$('#addHere tbody tr').each(function(i, v) {
+  		if ($(this).find('#apiName').html() != $('#filterAPI').val()) {
+  			$(this).hide();
+        	}
+    	});
+    });
 });
