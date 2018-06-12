@@ -8,20 +8,22 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 		<style>
 			body {
-				background-color: black;
+				background-color: grey;
 			}
 		</style>
 	</head>
 	<body>
 		<div class="container">
-			<div class="dropdown">
-			<button id="getResults" type="button" class="btn btn-primary">Get tally results</button>
-			<button id="getOptions" type="button" class="btn btn-primary">Get voting options</button>
-			<table class="table table-bordered table-dark table-hover">
-			<tbody id='addHere'>
-			</tbody>
-		</table>
-	</div>
+			<div class="row">
+				<div class="col" style="padding-top: 10px;">
+					<button id="getResults" type="button" class="btn btn-primary">Get tally results</button>
+					<button id="getOptions" type="button" class="btn btn-primary">Get voting options</button>
+				</div>
+				<table class="table table-bordered table-dark table-hover" style="margin: 10px;">
+					<tbody id='addHere'>
+					</tbody>
+				</table>
+			</div>
 	</div>
 	</body>
 </html>
