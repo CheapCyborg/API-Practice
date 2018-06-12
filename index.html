@@ -4,14 +4,20 @@
 		<title></title>
 		<script src='js/jquery-3.3.1.min.js' type="text/javascript"></script>
 		<script src="js/main.js" type="text/javascript"></script>
-		<script src="js/bootsrap.min.js" type="text/javascript"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript"></script>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+
+		<style>
+			body {
+				background-color: black;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="container">
 			<button id="getResults" type="button" class="btn btn-primary">Get tally results</button>
 			<button id="getOptions" type="button" class="btn btn-primary">Get voting options</button>
-			<table class="table">
+			<table class="table table-bordered table-dark table-hover">
 			<tbody id='addHere'>
 			</tbody>
 		</table>
